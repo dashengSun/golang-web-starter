@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  dev:
+    links:
+      - db
+    image: 415148673/golang-web-base-image@sha256:18de5eb058a54b64f32d58b57a1eb3009b9ed49d90bd53056b95c5c8d5894cd6
+    environment:
+      - PORT=8080
+      - DB_USER=docker
+      - DB_HOST=db
+      - DB_NAME=webstarter
+    volumes:
+      - .:/go/src/golang-web-starter
+#      - golang-vender-cache:/go/src/golang-web-starter/vendor
+    working_dir: /go/src/golang-web-starter
+    ports:
+      - "3000:3000"
+    command: gin
+
+  db:
+    image: 415148673/postgres@sha256:6d4800c53e68576e05d3a61f2b62ed573f40692bcc72a3ebef3b04b3986bb70c
+    volumes:
+      - go-web-starter-db-cache:/var/lib/postgresql/data
+
+volumes:
+#  golang-vender-cache:
+  go-web-starter-db-cache:

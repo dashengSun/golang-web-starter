@@ -1,0 +1,13 @@
+package: golang-web-starter
+import:
+- package: github.com/gin-gonic/gin
+  version: ^1.1.4
+- package: github.com/jinzhu/gorm
+  version: ^1.0.0
+- package: github.com/mattes/migrate
+  version: ^3.0.1
+- package: github.com/lib/pq
+- package: github.com/stretchr/testify
+  version: ^1.1.4
+- package: github.com/smartystreets/goconvey
+  version: ^1.6.2

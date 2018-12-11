@@ -1,0 +1,15 @@
+#!/bin/bash -e
+#
+# Publish Postgres Base Docker image
+cd $(dirname $0)/../base-db
+
+REPOSITORY="415148673/postgres"
+VERSION='9.6'
+
+# Build the image
+docker build -t ${REPOSITORY}:${VERSION} .
+
+# Release to new registry
+docker push ${REPOSITORY}:${VERSION}
+docker tag ${REPOSITORY}:${VERSION} ${REPOSITORY}:latest
+docker push ${REPOSITORY}:latest

@@ -1,0 +1,16 @@
+#!/bin/bash -e
+#
+# Publish glide Docker image
+
+cd $(dirname $0)/../base-image
+
+REPOSITORY=415148673/golang-web-base-image
+VERSION=$(TZ=Asia/Shanghai date +'%Y%m%d%H%M')
+
+# Build the image
+docker build -t ${REPOSITORY}:${VERSION} .
+
+# Release to new registry
+docker push ${REPOSITORY}:${VERSION}
+docker tag ${REPOSITORY}:${VERSION} ${REPOSITORY}:latest
+docker push ${REPOSITORY}:latest

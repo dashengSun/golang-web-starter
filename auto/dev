@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+cd $(dirname $0)/..
+
+docker-compose run --rm dev sh -c 'glide install && migrate -source file://migrations -database "postgres://$DB_USER:$DB_PASSWORD@$DB_HOST:5432/$DB_NAME?sslmode=disable" up'
+docker-compose run --service-ports --rm dev "${@-gin}"

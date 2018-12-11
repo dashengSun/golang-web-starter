@@ -1,0 +1,18 @@
+<!--header.html-->
+
+<!doctype html>
+<html>
+	{{ template "header.html" .}}
+
+	<body class="container">
+	<!--Embed the menu.html template at this location-->
+		{{ template "menu.html" . }}
+
+		<h1 style="color: #65854E">{{.payload.Title}}</h1>
+
+		<p>{{.payload.Author}}</p>
+
+		{{ template "footer.html" .}}
+	</body>
+
+</html>

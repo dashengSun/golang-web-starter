@@ -1,0 +1,5 @@
+.idea
+vendor
+.glide
+golang-web-starter
+gin-bin

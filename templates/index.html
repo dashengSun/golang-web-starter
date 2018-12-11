@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	{{ template "header.html" .}}
+
+	<body class="container">
+		<!--Embed the menu.html template at this location-->
+		{{ template "menu.html" . }}
+
+		{{range .payload}}
+			<a href="/book/{{.ID}}">
+				<h2>{{.Title}}</h2>
+			</a>
+			<p>by {{.Author}}</p>
+		{{end}}
+
+		<br/>
+		<form action="/book" method="post">
+			<div class="form-group">
+				<label for="formGroupTitleInput">Title</label>
+				<input type="text" class="form-control" style="width: 50%" id="formGroupTitleInput" placeholder="Enter title" name="title" required>
+			</div>
+			<div class="form-group">
+				<label or="formGroupAuthorInput">Author</label>
+				<input type="text" class="form-control" style="width: 50%" id="formGroupAuthorInput" placeholder="Enter author" name="author" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Save</button>
+		</form>
+		{{ template "footer.html" .}}
+	</body>
+</html>
